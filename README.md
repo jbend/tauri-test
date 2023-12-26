@@ -1,5 +1,7 @@
 # Tauri Test App
 
+[![publish](https://github.com/jbend/tauri-test/actions/workflows/main.yml/badge.svg)](https://github.com/jbend/tauri-test/actions/workflows/main.yml)
+
 ## Setup
 
 Install `create-tauri-app` with cargo...

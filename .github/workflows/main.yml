@@ -3,8 +3,9 @@ name: 'publish'
 # This will trigger the action on each push to the `release` branch.
 on:
   push:
-    branches:
-      - release
+    tags:
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   publish-tauri:
@@ -51,3 +52,9 @@ jobs:
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: true
           prerelease: false
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: tauri-test
+          path: src-tauri/target/release/bundle/dmg/
