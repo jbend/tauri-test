@@ -49,8 +49,11 @@ jobs:
           releaseDraft: true
           prerelease: false
 
-      - name: List current directory
-        run: ls -lt src/-tauri/target/release
+      - name: List src-tauri/target/release
+        run: ls -lt src-tauri/target/release
+
+      - name: List src-tauri/target/release/bundle
+        run: ls -lt src-tauri/target/release/bundle
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
