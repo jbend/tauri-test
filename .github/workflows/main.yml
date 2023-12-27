@@ -1,11 +1,7 @@
-name: 'publish'
+name: "publish"
 
 # This will trigger the action on each push to the `release` branch.
-on:
-  push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
+on: [push]
 
 jobs:
   publish-tauri:
@@ -48,13 +44,24 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: 'App v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
+          releaseName: "App v__VERSION__"
+          releaseBody: "See the assets to download this version and install."
           releaseDraft: true
           prerelease: false
+
+      - name: List current directory
+        run: ls -la
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: tauri-test
           path: src-tauri/target/release/bundle/dmg/
+
+      - uses: chrnorm/deployment-action@v2
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: "${{ github.token }}"
+          environment-url: http://tauri-test.westcoastcode.com
+          environment: production
