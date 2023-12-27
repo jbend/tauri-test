@@ -1,7 +1,10 @@
 <script lang="ts">
+  import Header from './components/Header.svelte'
   import Greet from './lib/Greet.svelte'
+
 </script>
 
+<Header />
 <main class="flex flex-col items-center pt-10 gap-6">
   <h1 class="font-semibold text-4xl">Welcome to Ordo!</h1>
 
