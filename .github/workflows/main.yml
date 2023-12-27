@@ -114,9 +114,7 @@ jobs:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: |
-            'src-tauri/target/release/bundle/msi'
-            'src-tauri/target/release/bundle/nsis'
+          source_dir: 'src-tauri/target/release/bundle/msi'
 
         # Update deployment status
       - name: Update deployment success
