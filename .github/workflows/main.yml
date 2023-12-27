@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v4
         id: upload-macos-artifacts
         with:
-          name: tauri-test
+          name: macos-tauri-test
           path: src-tauri/target/release/bundle/dmg/
 
       - name: Echo artifact id
@@ -77,14 +77,14 @@ jobs:
         uses: actions/upload-artifact@v4
         id: upload-windows-artifact
         with:
-          name: tauri-test
+          name: windows-tauri-test
           path: |
             src-tauri/target/release/bundle/msi/
             src-tauri/target/release/bundle/nsis/
 
       - name: Echo artifact id
         if: ${{ matrix.platform == 'windows-latest' }}
-        run: echo 'Artifact Id ${{steps.artifact-upload-step.outputs.artifact-id}}'
+        run: echo 'Artifact Id ${{steps.upload-windows-artifact.outputs.artifact-id}}'
 
         # Create GitHub Deployment
       - name: Create GitHub deployment
