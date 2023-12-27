@@ -50,24 +50,43 @@ jobs:
           releaseDraft: true
           prerelease: false
 
+        # Temp read directories
       - name: List bundle MacOS
         if: ${{ matrix.platform == 'macos-latest' }}
         run: ls -lt src-tauri/target/release/bundle
 
       - name: List bundle Windows
         if: ${{ matrix.platform == 'windows-latest' }}
-        run: tree src-tauri\target\release
+        run: tree src-tauri\target\release\bundle
 
+        # Upload artifacts
       - name: Upload Artifacts
+        if: ${{ matrix.platform == 'macos-latest' }}
         uses: actions/upload-artifact@v4
-        id: artifact-upload-step
+        id: upload-macos-artifacts
         with:
           name: tauri-test
           path: src-tauri/target/release/bundle/dmg/
 
       - name: Echo artifact id
+        if: ${{ matrix.platform == 'macos-latest' }}
+        run: echo 'Artifact Id ${{steps.upload-macos-artifacts.outputs.artifact-id}}'
+
+      - name: Upload Artifacts
+        if: ${{ matrix.platform == 'windows-latest' }}
+        uses: actions/upload-artifact@v4
+        id: upload-windows-artifact
+        with:
+          name: tauri-test
+          path: |
+            src-tauri/target/release/bundle/msi/
+            src-tauri/target/release/bundle/nsis/
+
+      - name: Echo artifact id
+        if: ${{ matrix.platform == 'windows-latest' }}
         run: echo 'Artifact Id ${{steps.artifact-upload-step.outputs.artifact-id}}'
 
+        # Create GitHub Deployment
       - name: Create GitHub deployment
         uses: chrnorm/deployment-action@v2
         id: preview
@@ -76,15 +95,30 @@ jobs:
           description: "Deploy to preview environment"
           environment: preview
 
-      - name: Upload to s3
+        # Upload to S3
+      - name: Upload Mac artifacts to s3
+        if: ${{ matrix.platform == 'macos-latest' }}
         uses: shallwefootball/s3-upload-action@master
-        id: s3
+        id: s3-mac
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           source_dir: 'src-tauri/target/release/bundle/dmg/'
 
+      - name: Upload Windows Artifacts to s3
+        if: ${{ matrix.platform == 'windows-latest' }}
+        uses: shallwefootball/s3-upload-action@master
+        id: s3-windows
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY}}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          source_dir: |
+            'src-tauri/target/release/bundle/msi'
+            'src-tauri/target/release/bundle/nsis'
+
+        # Update deployment status
       - name: Update deployment success
         if: success()
         uses: chrnorm/deployment-status@v2
