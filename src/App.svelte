@@ -2,8 +2,8 @@
   import Greet from './lib/Greet.svelte'
 </script>
 
-<main class="container">
-  <h1>Welcome to Ordo!</h1>
+<main class="flex flex-col items-center pt-10 gap-6">
+  <h1 class="font-semibold text-4xl">Welcome to Ordo!</h1>
 
   <p>
     Click on the Tauri, Vite, and Svelte logos to learn more.
