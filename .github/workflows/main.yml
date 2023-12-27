@@ -50,8 +50,13 @@ jobs:
           releaseDraft: true
           prerelease: false
 
-      - name: List src-tauri/target/release/bundle
+      - name: List bundle MacOS
+        if: ${{ matrix.platform == 'macos-latest' }}
         run: ls -lt src-tauri/target/release/bundle
+
+      - name: List bundle Windows
+        if: ${{ matrix.platform == 'windows-latest' }}
+        run: dir
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -80,16 +85,21 @@ jobs:
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           source_dir: 'src-tauri/target/release/bundle/dmg/'
 
-      - name: Update deployment status (success)
+      - name: Update deployment success
         if: success()
-        uses: chrnorm/deployment-status@releases/v1
+        uses: chrnorm/deployment-status@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # s3://tauri-test.westcoastcode.com/index.html
-          # https://west-coast-code.s3.ca-central-1.amazonaws.com/tauri-test/
-          # https://s3.us-west-2.amazonaws.com/tauri-test.westcoastcode.com/index.html
-          target_url: https://s3.us-west-2.amazonaws.com/tauri-test.westcoastcode.com/tauri-test/${{steps.S3.outputs.object_key}}
           state: 'success'
-          deployment_id: ${{ steps.preview.outputs.deployment_id }}
+          deployment-id: ${{ steps.preview.outputs.deployment_id }}
+
+      - name: Update deployment failure
+        if: failure()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: 'failure'
+          deployment-id: ${{ steps.preview.outputs.deployment_id }}
+      
   
   
