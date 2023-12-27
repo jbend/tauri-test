@@ -7,6 +7,7 @@ jobs:
   publish-tauri:
     permissions:
       contents: write
+      deployments: write
     strategy:
       fail-fast: false
       matrix:
@@ -14,6 +15,7 @@ jobs:
         # platform: [macos-latest, ubuntu-20.04, windows-latest]
 
     runs-on: ${{ matrix.platform }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -48,9 +50,6 @@ jobs:
           releaseBody: "See the assets to download this version and install."
           releaseDraft: true
           prerelease: false
-
-      - name: List src-tauri/target/release
-        run: ls -lt src-tauri/target/release
 
       - name: List src-tauri/target/release/bundle
         run: ls -lt src-tauri/target/release/bundle

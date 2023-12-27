@@ -16,4 +16,10 @@ Scaffold new project...
 cargo create-tauri-app
 ```
 
+## Development
 
+Run application in watch mode 
+
+```shell
+pnpm tauri dev
+```
