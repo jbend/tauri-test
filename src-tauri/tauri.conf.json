@@ -37,8 +37,10 @@
         "fullscreen": false,
         "resizable": true,
         "title": "tauri-test",
-        "width": 1024,
-        "height": 768
+        "width": 1920,
+        "height": 1080,
+        "minWidth": 640,
+        "minHeight": 480
       }
     ]
   }

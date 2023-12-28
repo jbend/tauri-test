@@ -1,3 +1,4 @@
+import "./theme.css";
 import "./styles.css";
 import App from "./App.svelte";
 

@@ -2,31 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-
-  color: #0f0f0f;
-  background-color: #f6f6f6;
-
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-}
-
-.app {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
+    /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
+
+    color-theme: light;
+    --color-text: var(--latte-text);
+    --color-surface: var(--latte-base);
+
+    --color-primary: var(--frappe-blue);
+    --color-secondary: var(--frappe-rosewater);
+    --color-success: var(--frappe-green);
+    --color-warning: var(--frappe-yellow);
+    --color-error: var(--frappe-red);
+
+    --color-overlay0: var(--latte-overlay0);
+    --color-overlay1: var(--latte-overlay1);
+    --color-overlay2: var(--latte-overlay2);
+
+    --color-base: var(--latte-base);
+    --color-crust: var(--latte-crust);
+    --color-mantle: var(--latte-mantle);
+
+    color: rgb(var(--color-text));
+    background-color: rgb(var(--color-surface));
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-base: var(--mocha-base);
+      --color-crust: var(--mocha-crust);
+      --color-mantle: var(--mocha-mantle);
+      
+      /* --color-text: var(--frappe-text); */
+      /* --color-surface: var(--frappe-base); */
+      /* --color-text: var(--macchiato-text); */
+      /* --color-surface: var(--macchiato-base); */
+      --color-text: var(--mocha-text);
+      --color-surface: var(--mocha-base);
+    }
   }
 }
