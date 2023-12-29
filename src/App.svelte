@@ -6,24 +6,17 @@
   const recentVendors = [
     {
       name: 'Tauri',
-      logo: 'https://avatars.githubusercontent.com/u/52050269?s=200&v=4',
-      url: 'https://tauri.studio'
     },
     {
       name: 'Vite',
-      logo: 'https://avatars.githubusercontent.com/u/22247014?s=200&v=4',
-      url: 'https://vitejs.dev'
     },
     {
       name: 'Svelte',
-      logo: 'https://avatars.githubusercontent.com/u/23617963?s=200&v=4',
-      url: 'https://svelte.dev'
     }
   ];
 
 </script>
 
-<!-- <Header /> -->
 <header class="p-4 bg-mantle">
   <div class="flex gap-4">
     <Inventory size="48" />
@@ -51,4 +44,3 @@
     </div>
   </main>
 </div>
-<!-- <Footer /> -->
