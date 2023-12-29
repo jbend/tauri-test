@@ -5,8 +5,6 @@
 @layer base {
     :root {
         
-        font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-
         /* Latte */
         --latte-text: 76 79 105;         /* 	hsl(234, 16%, 35%) */
         --latte-subtext1: 92 95 119;     /* 	hsl(233, 13%, 41%) */
