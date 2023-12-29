@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Footer from './components/Footer.svelte';
-  import Header from './components/Header.svelte';
-  import ASideItem from './components/ASideItem.svelte';
+  import Inventory from './components/svg/Inventory.svelte';
+  import RequestQuote from './components/svg/RequestQuote.svelte';
+  import Settings from './components/svg/Settings.svelte';
   
   const recentVendors = [
     {
@@ -23,27 +23,32 @@
 
 </script>
 
-<Header />
-<main class="m-3 flex pt-2 gap-6">
-  <aside class="min-w-48 lg:min-w-64 border border-overlay0">
-    <ul class="list-none">
-      {#each recentVendors as vendor}
-        <ASideItem name={vendor.name}/>
-      {/each}
-    </ul>
-  </aside>
-  <div class="grow border border-overlay0">
-    <h1 class="font-semibold text-4xl">Welcome to Ordo!</h1>
-    <p>
-      Click on the Tauri, Vite, and Svelte logos to learn more.
-    </p>
-    <div>
-      <div class="bg-primary p-4">primary</div>
-      <div class="bg-secondary p-4">secondary</div>
-      <div class="bg-success p-4">success</div>
-      <div class="bg-warning p-4">warning</div>
-      <div class="bg-error p-4">error</div>
-    </div>
+<!-- <Header /> -->
+<header class="p-4 bg-mantle">
+  <div class="flex gap-4">
+    <Inventory size="48" />
   </div>
-</main>
+</header>
+<div class="h-full flex flex-auto items-stretch">
+  <aside class="flex flex-col items-center bg-base">
+    <div class="p-6 hover:bg-surface0">
+      <RequestQuote size="36" />
+    </div>
+    <div class="p-6 hover:bg-surface0">
+      <Inventory size="36" />
+    </div>
+    <div class="p-6 grow">
+    </div>
+    <div class="p-6 hover:bg-surface0">
+      <Settings size="36" />
+    </div>
+  </aside>
+  <main class="grow flex">
+    <div class="">
+      <p>
+        Click on the Tauri, Vite, and Svelte logos to learn more.
+      </p>
+    </div>
+  </main>
+</div>
 <!-- <Footer /> -->

@@ -74,6 +74,10 @@
         --mocha-subtext1: 186 194 222; 	        /*  hsl(227, 35%, 80%) */
         --mocha-subtext0: 166 173 200; 	        /*  hsl(228, 24%, 72%) */
 
+        --mocha-surface2: 88 91 112;            /* 	hsl(233, 12%, 39%) */
+        --mocha-surface1: 69 71 90;             /* 	hsl(234, 13%, 31%) */
+        --mocha-surface0: 49 50 68;             /* 	hsl(237, 16%, 23%) */
+
         --mocha-overlay2: 147 153 178;          /*	hsl(228, 17%, 64%) */
         --mocha-overlay1: 127 132 156;          /*	hsl(230, 13%, 55%) */
         --mocha-overlay0: 108 112 134;          /*	hsl(231, 11%, 47%) */

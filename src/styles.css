@@ -8,7 +8,7 @@
 
     color-theme: light;
     --color-text: var(--latte-text);
-    --color-surface: var(--latte-base);
+    --color-surface: var(--latte-crust);
 
     --color-primary: var(--frappe-blue);
     --color-secondary: var(--frappe-rosewater);
@@ -19,6 +19,10 @@
     --color-overlay0: var(--latte-overlay0);
     --color-overlay1: var(--latte-overlay1);
     --color-overlay2: var(--latte-overlay2);
+
+    --color-surface0: var(--latte-surface0);
+    --color-surface1: var(--latte-surface1);
+    --color-surface2: var(--latte-surface2);
 
     --color-base: var(--latte-base);
     --color-crust: var(--latte-crust);
@@ -35,6 +39,7 @@
   }
 
   .app {
+    min-height: 100vh;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -45,13 +50,17 @@
       --color-base: var(--mocha-base);
       --color-crust: var(--mocha-crust);
       --color-mantle: var(--mocha-mantle);
+
+      --color-surface0: var(--mocha-surface0);
+      --color-surface1: var(--mocha-surface1);
+      --color-surface2: var(--mocha-surface2);
       
       /* --color-text: var(--frappe-text); */
       /* --color-surface: var(--frappe-base); */
       /* --color-text: var(--macchiato-text); */
       /* --color-surface: var(--macchiato-base); */
       --color-text: var(--mocha-text);
-      --color-surface: var(--mocha-base);
+      --color-surface: var(--mocha-crust);
     }
   }
 }

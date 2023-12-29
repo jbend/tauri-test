@@ -18,6 +18,10 @@ export default {
         "overlay1": "rgb(var(--color-overlay1) / <alpha-value>)",
         "overlay2": "rgb(var(--color-overlay2) / <alpha-value>)",
 
+        "surface0": "rgb(var(--color-surface0) / <alpha-value>)",
+        "surface1": "rgb(var(--color-surface1) / <alpha-value>)",
+        "surface2": "rgb(var(--color-surface2) / <alpha-value>)",
+
         "base": "rgb(var(--color-base) / <alpha-value>)",
         "crust": "rgb(var(--color-crust) / <alpha-value>)",
         "mantle": "rgb(var(--color-mantle) / <alpha-value>)",
